@@ -9,22 +9,25 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/activity_main_greeting_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:text="Hello what's your name ?"/>
 
     <EditText
+        android:id="@+id/activity_main_name_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Please enter your name" />
 
     <Button
+        android:id="@+id/activity_main_play_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="40dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:text="Play"/>
+        android:text="Play !"/>
 
 
 </LinearLayout>
