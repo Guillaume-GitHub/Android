@@ -1,4 +1,4 @@
-package com.bague.guillaume.topquiz;
+package com.bague.guillaume.topquiz.controller;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +10,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.bague.guillaume.topquiz.R;
+import com.bague.guillaume.topquiz.model.User;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView mGreetingTxt;
     private EditText mNameInput;
     private Button mPlayButton;
+    private User mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         mGreetingTxt = findViewById(R.id.activity_main_greeting_txt);
         mNameInput =  findViewById(R.id.activity_main_name_input);
         mPlayButton = findViewById(R.id.activity_main_play_btn);
+        mUser = new User();
 
         mPlayButton.setEnabled(false);
 
@@ -43,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 mPlayButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        mUser.setFirstName(mNameInput.getText().toString());
                       Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);
                       startActivity(gameActivityIntent);
                     }
