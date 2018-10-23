@@ -2,6 +2,7 @@ package com.bague.guillaume.topquiz.controller;
 
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +31,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private int mScore;
     private  int mNumberOfQuestions;
+
+    public static final String BUNDLE_EXTRA_SCORE = "BUNDLE_EXTRA_SCORE";
 
 
     @Override
@@ -142,6 +145,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        //return score to MainActivity.java
+                        Intent intent = new Intent();
+                        intent.putExtra(BUNDLE_EXTRA_SCORE,mScore);
+                        setResult(RESULT_OK,intent);
+
                         // end the current activity and return to the previous activity
                         finish();
                     }
