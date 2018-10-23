@@ -21,15 +21,21 @@ public class MainActivity extends AppCompatActivity {
     private EditText mNameInput;
     private Button mPlayButton;
     private User mUser;
-    
+    private SharedPreferences mPreferences;
 
     public static final int GAME_ACTIVITY_REQUEST_CODE = 1;
+    public static final String PREF_KEY_SCORE = "PREF_KEY_SCORE";
+    public static final String PREF_KEY_FIRSTNAME = "PREF_KEY_FIRSTNAME";
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(GAME_ACTIVITY_REQUEST_CODE == requestCode && RESULT_OK == resultCode){
             //fetch the score from intent
             int score = data.getIntExtra(GameActivity.BUNDLE_EXTRA_SCORE,0);
+
+            mPreferences.edit()
+                        .putInt(PREF_KEY_SCORE,score)
+                        .apply();
         }
     }
 
@@ -41,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         mGreetingTxt = findViewById(R.id.activity_main_greeting_txt);
         mNameInput =  findViewById(R.id.activity_main_name_input);
         mPlayButton = findViewById(R.id.activity_main_play_btn);
+
+        mPreferences = getPreferences(MODE_PRIVATE);//only this application can use it
 
         mUser = new User();
 
@@ -63,6 +71,11 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         mUser.setFirstName(mNameInput.getText().toString());
+
+                        mPreferences.edit()
+                                    .putString(PREF_KEY_FIRSTNAME,mUser.getFirstName())
+                                    .apply();
+
                       Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);
                       startActivityForResult(gameActivityIntent,GAME_ACTIVITY_REQUEST_CODE);
                     }
