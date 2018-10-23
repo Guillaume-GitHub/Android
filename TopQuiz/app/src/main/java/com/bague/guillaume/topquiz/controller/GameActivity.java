@@ -1,5 +1,8 @@
 package com.bague.guillaume.topquiz.controller;
 
+
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +28,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private QuestionBank mQuestionBank;
     private Question mCurrentQuestion;
 
+    private int mScore;
+    private  int mNumberOfQuestions;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +38,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_game);
 
         mQuestionBank = this.generateQuestions();
+        mScore = 0;
+        mNumberOfQuestions = 4;
+
         // Wire widgets
         mQuestionTxt = (TextView) findViewById(R.id.GameActivity_Question_Txt);
         mAnswer1Btn = (Button) findViewById(R.id.GameActivity_Answser1_Btn);
@@ -108,11 +117,39 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         int responseIndex = (int) v.getTag();
-        if (responseIndex == mCurrentQuestion.getAnswerIndex())
+        if (responseIndex == mCurrentQuestion.getAnswerIndex()) {
             //Correct
-            Toast.makeText(this,"Correct",Toast.LENGTH_SHORT).show();
-        else
+            Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
+            mScore++;
+        }else{
             //Not correct
-            Toast.makeText(this,"Not Correct",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Not Correct", Toast.LENGTH_SHORT).show();
+        }
+
+        if (--mNumberOfQuestions == 0){
+            endGame();
+        }else {
+            mCurrentQuestion = mQuestionBank.getQuestion();
+            displayQuestion(mCurrentQuestion);
+        }
+
     }
+
+    private void endGame() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Well Done !")
+                .setMessage("Your score is " + mScore)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // end the current activity and return to the previous activity
+                        finish();
+                    }
+                })
+                .create()
+                .show();
+
+    }
+
+
 }
