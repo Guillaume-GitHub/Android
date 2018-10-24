@@ -3,9 +3,11 @@ package com.bague.guillaume.topquiz.controller;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,15 +36,19 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     public static final String BUNDLE_EXTRA_SCORE = "BUNDLE_EXTRA_SCORE";
 
+    private boolean mEneableTouchEvents;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("GameActivity : onCreate()");
         setContentView(R.layout.activity_game);
 
         mQuestionBank = this.generateQuestions();
         mScore = 0;
         mNumberOfQuestions = 4;
+        mEneableTouchEvents = true;
 
         // Wire widgets
         mQuestionTxt = (TextView) findViewById(R.id.GameActivity_Question_Txt);
@@ -129,13 +135,27 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "Not Correct", Toast.LENGTH_SHORT).show();
         }
 
-        if (--mNumberOfQuestions == 0){
-            endGame();
-        }else {
-            mCurrentQuestion = mQuestionBank.getQuestion();
-            displayQuestion(mCurrentQuestion);
-        }
+        mEneableTouchEvents = false;
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mEneableTouchEvents = true;
+                // If this is the last question, ends the game.
+                // Else, display the next question.
+                if (--mNumberOfQuestions == 0){
+                    endGame();
+                }else {
+                    mCurrentQuestion = mQuestionBank.getQuestion();
+                    displayQuestion(mCurrentQuestion);
+                }
+            }
+        }, 2000); // LENGTH_SHORT is usually 2 second long
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        return mEneableTouchEvents && super.dispatchTouchEvent(ev);
     }
 
     private void endGame() {
@@ -159,5 +179,33 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        System.out.println("GameActivity : onStart()");
+    }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        System.out.println("GameActivity : onStop()");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        System.out.println("GameActivity : onPause()");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        System.out.println("GameActivity : onResume()");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.out.println("GameActivity : onDestroy()");
+    }
 }

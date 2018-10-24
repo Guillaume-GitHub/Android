@@ -46,18 +46,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
+        System.out.println("MainActivity : onRestart()");
+
         mFirstName = mPreferences.getString(PREF_KEY_FIRSTNAME,"");
         mScore = mPreferences.getInt(PREF_KEY_SCORE,-1);
 
         if(!mFirstName.isEmpty() && mScore != -1) {
             loadUserPreferences();
-
         }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("MainActivity : onCreate()");
+
         setContentView(R.layout.activity_main);
 
         mGreetingTxt = findViewById(R.id.activity_main_greeting_txt);
@@ -79,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 if(mNameInput.length() < 0 )
                     mPlayButton.setEnabled(true);
-
             }
 
             @Override
@@ -113,7 +115,36 @@ public class MainActivity extends AppCompatActivity {
                 + "Your last score was "+ mScore + ", can you doing better ?");
         mNameInput.setText(mFirstName);
         mPlayButton.setEnabled(true);
-        Toast.makeText(this,"passe les pref",Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        System.out.println("MainActivity : onStart()");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        System.out.println("MainActivity : onStop()");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        System.out.println("MainActivity : onPause()");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        System.out.println("MainActivity : onResume()");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.out.println("MainActivity : onDestroy()");
     }
 
 }
