@@ -35,6 +35,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private  int mNumberOfQuestions;
 
     public static final String BUNDLE_EXTRA_SCORE = "BUNDLE_EXTRA_SCORE";
+    public static final String BUNDLE_STATE_SCORE = "BUNDLE_EXTRA_SCORE";
+    public static final String BUNDLE_STATE_QUESTION = "BUNDLE_EXTRA_SCORE";
 
     private boolean mEneableTouchEvents;
 
@@ -44,10 +46,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         System.out.println("GameActivity : onCreate()");
         setContentView(R.layout.activity_game);
-
         mQuestionBank = this.generateQuestions();
-        mScore = 0;
-        mNumberOfQuestions = 4;
+
+        if (savedInstanceState != null){
+            mScore = savedInstanceState.getInt(BUNDLE_STATE_SCORE,0);
+            mNumberOfQuestions = savedInstanceState.getInt(BUNDLE_STATE_QUESTION,0);
+        }else{
+            mScore = 0;
+            mNumberOfQuestions = 4;
+        }
+
         mEneableTouchEvents = true;
 
         // Wire widgets
@@ -156,6 +164,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         return mEneableTouchEvents && super.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt(BUNDLE_STATE_SCORE, mScore);
+        outState.putInt(BUNDLE_STATE_QUESTION, mNumberOfQuestions);
+        super.onSaveInstanceState(outState);
     }
 
     private void endGame() {
