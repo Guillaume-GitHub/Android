@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bague.guillaume.topquiz.R;
 import com.bague.guillaume.topquiz.model.User;
@@ -27,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     public static final String PREF_KEY_SCORE = "PREF_KEY_SCORE";
     public static final String PREF_KEY_FIRSTNAME = "PREF_KEY_FIRSTNAME";
 
+    private String mFirstName;
+    private int mScore;
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(GAME_ACTIVITY_REQUEST_CODE == requestCode && RESULT_OK == resultCode){
@@ -40,6 +44,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        mFirstName = mPreferences.getString(PREF_KEY_FIRSTNAME,"");
+        mScore = mPreferences.getInt(PREF_KEY_SCORE,-1);
+
+        if(!mFirstName.isEmpty() && mScore != -1) {
+            loadUserPreferences();
+
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -49,14 +65,20 @@ public class MainActivity extends AppCompatActivity {
         mPlayButton = findViewById(R.id.activity_main_play_btn);
 
         mPreferences = getPreferences(MODE_PRIVATE);//only this application can use it
+        mFirstName = mPreferences.getString(PREF_KEY_FIRSTNAME,"");
+        mScore = mPreferences.getInt(PREF_KEY_SCORE,-1);
 
-        mUser = new User();
-
-        mPlayButton.setEnabled(false);
+            if(!mFirstName.isEmpty() && mScore != -1) {
+                loadUserPreferences();
+            }
+                mUser = new User();
+                mPlayButton.setEnabled(false);
 
         mNameInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if(mNameInput.length() < 0 )
+                    mPlayButton.setEnabled(true);
 
             }
 
@@ -83,7 +105,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+}
 
 
+    private void loadUserPreferences() {
+        mGreetingTxt.setText("Welcome back " + mFirstName + "\r\n"
+                + "Your last score was "+ mScore + ", can you doing better ?");
+        mNameInput.setText(mFirstName);
+        mPlayButton.setEnabled(true);
+        Toast.makeText(this,"passe les pref",Toast.LENGTH_LONG).show();
     }
+
 }
