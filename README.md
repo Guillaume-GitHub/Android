@@ -1,4 +1,4 @@
-# [TopQuizz](https://github.com/Guillaume-GitHub/Android/TopQuizz)
+# [TopQuizz](https://github.com/Guillaume-GitHub/Android/TopQuiz)
 
 Cours OC - Développez votre première Application Android
 
@@ -9,7 +9,7 @@ Cours OC - Développez votre première Application Android
 * Maîtriser le cycle de vie d'une application et de ses composants
 ____________________________________________________________________________________________________________
 
-# Debugger / Tests unitaires
+# [Debugger / Tests unitaires](https://github.com/Guillaume-GitHub/Android/tree/master/Debugger%20-%20Tests%20unitaires)
 
 Cours OC - Développez des applications robustes et fiables
 
