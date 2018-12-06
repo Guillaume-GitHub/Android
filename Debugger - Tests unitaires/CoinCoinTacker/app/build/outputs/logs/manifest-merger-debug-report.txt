@@ -1,0 +1,158 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:2:1-22:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\86227781dbfae1e237a7a3c1bcc39f99\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\18bbf926c64633420e5774ce38b84a5a\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\637186c5fd3b0be16f5b5aa3669f6100\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\3dc79051446d395674b0b630ee4797d4\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\cf70f0991aecc32be8a53be1ffcfff2e\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\13f84d828b320cb14baeca9e5c9946ce\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\defc2d18df8119208ee02ea9e3e46b41\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\544c09c8195dedf9d101df0fb3007110\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\dcf61cf12c6b5371848a43d430703895\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\4489ad6aff9823d204740517bb3e65a7\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\e4002a4998ae9d5774983e4839a9bbda\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\70c79036334bcb5d61f5f581a2eed423\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\3903ee117e0cb6392e16286a26ee71e5\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\cf9c73dcd81be2250dc788a1ef95e29f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\de594ed2b38359c9dceac832b844f6c0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\3a5d6b9cd4bdbe1680f22c38d527dcab\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\24c1be61f9c172e53e5e94e2909ff20d\AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\cc7b15516681d66530ba6048921ea139\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\2a6f65ad349a9e9ba0ad2236689a95ca\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\f19b893b3cbb644a4e2996df76b65429\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\3c68736e53ca486989cbab7111ca45c7\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\d8558dcd051880b53f2db6277b850c79\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\8f884fb6658fc48a2a3ce476d4f94c8c\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\3498664554103837b8612a19768a0bf5\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\e3aadab63192e4ce557137873f28bf93\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\ed7001e95761e30753c1a1a606e92ec7\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\f93a8c179ca51473cb1d8765c39a5d9e\AndroidManifest.xml:17:1-22:12
+INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:2:1-22:12
+	package
+		ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:3:5-52
+		INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:2:1-22:12
+		INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:2:1-22:12
+		INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:2:11-69
+application
+ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:5:5-20:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\18bbf926c64633420e5774ce38b84a5a\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\18bbf926c64633420e5774ce38b84a5a\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\3a5d6b9cd4bdbe1680f22c38d527dcab\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\3a5d6b9cd4bdbe1680f22c38d527dcab\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\24c1be61f9c172e53e5e94e2909ff20d\AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\24c1be61f9c172e53e5e94e2909ff20d\AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\3a5d6b9cd4bdbe1680f22c38d527dcab\AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:11:9-40
+activity#com.bague.guillaume.coincointackertdd.Controller.MainActivity
+ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:12:9-18:20
+	android:name
+		ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:12:19-58
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:13:13-17:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:16:17-77
+	android:name
+		ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:16:27-74
+activity#com.bague.guillaume.coincointackertdd.Controller.AuthActivity
+ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:19:9-70
+	android:name
+		ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml:19:19-58
+uses-sdk
+INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\86227781dbfae1e237a7a3c1bcc39f99\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\86227781dbfae1e237a7a3c1bcc39f99\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\18bbf926c64633420e5774ce38b84a5a\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\18bbf926c64633420e5774ce38b84a5a\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\637186c5fd3b0be16f5b5aa3669f6100\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\637186c5fd3b0be16f5b5aa3669f6100\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\3dc79051446d395674b0b630ee4797d4\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\3dc79051446d395674b0b630ee4797d4\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\cf70f0991aecc32be8a53be1ffcfff2e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\cf70f0991aecc32be8a53be1ffcfff2e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\13f84d828b320cb14baeca9e5c9946ce\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\13f84d828b320cb14baeca9e5c9946ce\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\defc2d18df8119208ee02ea9e3e46b41\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\defc2d18df8119208ee02ea9e3e46b41\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\544c09c8195dedf9d101df0fb3007110\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\544c09c8195dedf9d101df0fb3007110\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\dcf61cf12c6b5371848a43d430703895\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\dcf61cf12c6b5371848a43d430703895\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\4489ad6aff9823d204740517bb3e65a7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\4489ad6aff9823d204740517bb3e65a7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\e4002a4998ae9d5774983e4839a9bbda\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\e4002a4998ae9d5774983e4839a9bbda\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\70c79036334bcb5d61f5f581a2eed423\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\70c79036334bcb5d61f5f581a2eed423\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\3903ee117e0cb6392e16286a26ee71e5\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\3903ee117e0cb6392e16286a26ee71e5\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\cf9c73dcd81be2250dc788a1ef95e29f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\cf9c73dcd81be2250dc788a1ef95e29f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\de594ed2b38359c9dceac832b844f6c0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\de594ed2b38359c9dceac832b844f6c0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\3a5d6b9cd4bdbe1680f22c38d527dcab\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\3a5d6b9cd4bdbe1680f22c38d527dcab\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\24c1be61f9c172e53e5e94e2909ff20d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\24c1be61f9c172e53e5e94e2909ff20d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\cc7b15516681d66530ba6048921ea139\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\cc7b15516681d66530ba6048921ea139\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\2a6f65ad349a9e9ba0ad2236689a95ca\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\2a6f65ad349a9e9ba0ad2236689a95ca\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\f19b893b3cbb644a4e2996df76b65429\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\f19b893b3cbb644a4e2996df76b65429\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\3c68736e53ca486989cbab7111ca45c7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\3c68736e53ca486989cbab7111ca45c7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\d8558dcd051880b53f2db6277b850c79\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\d8558dcd051880b53f2db6277b850c79\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\8f884fb6658fc48a2a3ce476d4f94c8c\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\8f884fb6658fc48a2a3ce476d4f94c8c\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\3498664554103837b8612a19768a0bf5\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\3498664554103837b8612a19768a0bf5\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\e3aadab63192e4ce557137873f28bf93\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\e3aadab63192e4ce557137873f28bf93\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\ed7001e95761e30753c1a1a606e92ec7\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\ed7001e95761e30753c1a1a606e92ec7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\f93a8c179ca51473cb1d8765c39a5d9e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\SAMSUNG\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\f93a8c179ca51473cb1d8765c39a5d9e\AndroidManifest.xml:20:5-44
+INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\SAMSUNG\AndroidStudioProjects\Android\CoinCoinTacker\app\src\main\AndroidManifest.xml
