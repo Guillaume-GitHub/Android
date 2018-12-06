@@ -19,8 +19,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="OpenClassrooms, c'est vraiment le top du top !"
-            android:textSize="35sp"
-            android:padding="40dip"
+            android:textSize="@dimen/size_title"
+            android:padding="@dimen/padding_title"
             android:textAlignment="center"
             android:textColor="#FFFFFF"/>
 
@@ -35,8 +35,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="200dip"
-            android:layout_height="200dip"
+            android:layout_width="@dimen/size_image_width"
+            android:layout_height="@dimen/size_image_height"
             android:src="@drawable/ic_openclassrooms" />
 
     </LinearLayout>
