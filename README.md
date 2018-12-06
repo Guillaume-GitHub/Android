@@ -21,7 +21,7 @@ Cours OC - Développez des applications robustes et fiables
 * Lancer une analyse statique de code
 ____________________________________________________________________________________________________________
 
-# Interface flexible et adaptative
+# (Interface flexible et adaptative)
 
 Cours OC - Construisez une interface utilisateur flexible et adaptative
 
