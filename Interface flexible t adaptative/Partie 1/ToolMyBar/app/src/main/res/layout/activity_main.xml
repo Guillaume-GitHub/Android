@@ -13,8 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:titleTextColor="@android:color/white" />
+
+        android:theme="@style/ToolbarTheme"
+        app:titleTextAppearance="@style/Toolbar.TitleText"
+        />
 
     <!-- Block 1 prenant la première moitié de l'écran (propriété layout_weight) -->
     <LinearLayout
