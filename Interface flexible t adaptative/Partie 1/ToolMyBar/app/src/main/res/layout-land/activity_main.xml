@@ -4,41 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     tools:context="com.openclassrooms.toolmybar.MainActivity">
 
-    <!-- Block 1 prenant la première moitié de l'écran (propriété layout_weight) -->
+        <!-- Block Toolbar -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="#BED4D6"
+        android:layout_height="wrap_content"
         android:gravity="center">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_land"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="OpenClassrooms, c'est vraiment le top du top !"
-            android:textSize="@dimen/size_title"
-            android:padding="@dimen/padding_title_land"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"/>
-
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
     </LinearLayout>
 
-    <!-- Block 2 prenant la deuxième moitié de l'écran -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="@dimen/size_image_width"
-            android:layout_height="@dimen/size_image_height"
-            android:src="@drawable/ic_openclassrooms" />
+<!--     Block 1 prenant la première moitié de l'écran (propriété layout_weight) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#BED4D6"
+                android:gravity="center">
 
-    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_title_land"
+                    android:text="OpenClassrooms, c'est vraiment le top du top !"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/size_title" />
+            </LinearLayout>
+
+
+<!--     Block 2 prenant la deuxième moitié de l'écran -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="@dimen/size_image_width"
+                    android:layout_height="@dimen/size_image_height"
+                    android:src="@drawable/ic_openclassrooms" />
+            </LinearLayout>
+
+        </LinearLayout>
 
 </LinearLayout>
