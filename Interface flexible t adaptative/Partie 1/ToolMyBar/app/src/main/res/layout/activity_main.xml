@@ -7,16 +7,12 @@
     android:orientation="vertical"
     tools:context="com.openclassrooms.toolmybar.MainActivity">
 
-<!--Déclaration de la toolbar-->
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
+    <!--Import Layout Toolbar-->
+    <include
+        layout="@layout/toolbar"
         android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"/>
 
-        android:theme="@style/ToolbarTheme"
-        app:titleTextAppearance="@style/Toolbar.TitleText"
-        />
 
     <!-- Block 1 prenant la première moitié de l'écran (propriété layout_weight) -->
     <LinearLayout

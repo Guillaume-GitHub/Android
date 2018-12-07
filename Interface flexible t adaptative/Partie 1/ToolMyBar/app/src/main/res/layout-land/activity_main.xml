@@ -8,19 +8,11 @@
     tools:context="com.openclassrooms.toolmybar.MainActivity">
 
         <!-- Block Toolbar -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_land"
+        <include
+            layout="@layout/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
-    </LinearLayout>
+            />
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -10,7 +10,7 @@
 
     <!--Toolbar Theme-->
     <style name="ToolbarTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:background">@color/colorPrimary</item>
         <!-- Color of title text in toolbar -->
         <item name="android:textColorPrimary">@color/colorAccent</item>
     </style>
@@ -18,6 +18,6 @@
     <!--Toolbar title Theme-->
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize" >21sp</item>
-        <item name="android:textStyle">italic</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>
