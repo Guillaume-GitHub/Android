@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="#D8DCF8"
+    tools:context=".Controllers.Fragments.MainFragment">
+
+    <!--fragment layout -->
+    <Button
+        android:id="@+id/fragment_main_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SHOW ME DETAILS !"
+        android:textSize="30sp"
+        android:textColor="@android:color/white"
+        android:background="#0000"/>
+
+</LinearLayout>
