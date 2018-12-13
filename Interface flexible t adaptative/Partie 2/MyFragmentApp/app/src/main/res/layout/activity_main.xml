@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- static Link between activity_main and fragment_main-->
-<fragment
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frameLayout_activity_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:name="com.bague.guillaume.myfragmentapp.Controllers.Fragments.MainFragment" />
+    android:layout_height="match_parent" />
