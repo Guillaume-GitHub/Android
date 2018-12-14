@@ -7,36 +7,35 @@ import android.view.View;
 import com.bague.guillaume.myfragmentapp.Controllers.Fragments.DetailFragment;
 import com.bague.guillaume.myfragmentapp.R;
 
-public class DetailActivity extends AppCompatActivity{
+public class DetailActivity extends AppCompatActivity {
 
-    private DetailFragment  mDetailFragment;
+    // Declare detail fragment
+    private DetailFragment detailFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        this.configureAndShowFragment();
+        // Configure and show home fragment
+        this.configureAndShowDetailFragment();
     }
 
+    // --------------
+    // FRAGMENTS
+    // --------------
 
-    //********
-    //FRAGMENT
-    //********
+    private void configureAndShowDetailFragment(){
+        // Get FragmentManager (Support) and Try to find existing instance of fragment in FrameLayout container
+        detailFragment = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.frame_layout_detail);
 
-    private void configureAndShowFragment(){
-
-        // A- Get FragmentManager (support) and Try to find an existing Fragment instance in FrameLayout container
-        mDetailFragment = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.frameLayout_activity_detail);
-
-        if (mDetailFragment == null){
-            //B- Create new instance of DetailFragment
-            mDetailFragment = new DetailFragment();
-            //C- Add it to FrameLayout container
+        if (detailFragment == null) {
+            // Create new main fragment
+            detailFragment = new DetailFragment();
+            // Add it to FrameLayout container
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.frameLayout_activity_detail, mDetailFragment)
+                    .add(R.id.frame_layout_detail, detailFragment)
                     .commit();
         }
-
     }
 }

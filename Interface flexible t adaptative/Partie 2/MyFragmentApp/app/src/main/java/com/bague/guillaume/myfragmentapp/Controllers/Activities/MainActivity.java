@@ -9,46 +9,63 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bague.guillaume.myfragmentapp.Controllers.Fragments.DetailFragment;
 import com.bague.guillaume.myfragmentapp.Controllers.Fragments.MainFragment;
 import com.bague.guillaume.myfragmentapp.R;
 
-public class MainActivity extends AppCompatActivity implements MainFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements MainFragment.OnButtonClickedListener {
 
-    //1 - Declare fragment
-    private MainFragment mMainFragment;
+    //Declare our two fragments
+    private MainFragment mainFragment;
+    private DetailFragment detailFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.configureAndShowFragment();
+        //Configure and show it
+        this.configureAndShowMainFragment();
+        this.configureAndShowDetailFragment();
     }
 
-    //*********
-    //CALL BACK
-    //*********
+    // --------------
+    // CallBack
+    // --------------
+
     @Override
-    public void onFragmentInteraction(View view) {
-        Log.d("Test", "onFragmentInteraction: click");
-        startActivity(new Intent(this, DetailActivity.class));
+    public void onButtonClicked(View view) {
+        //Check if detail fragment is not created
+        if (detailFragment == null){
+            startActivity(new Intent(this, DetailActivity.class));
+        }
     }
 
-    //********
-    //FRAGMENT
-    //********
+    // --------------
+    // FRAGMENTS
+    // --------------
 
-    private void configureAndShowFragment(){
-        // A- Get FragmentManager (support) and Try to find an existing Fragment instance in FrameLayout container
-        mMainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.frameLayout_activity_main);
+    private void configureAndShowMainFragment(){
 
-        if (mMainFragment == null){
-            // B- Create new mainFragment
-            mMainFragment = new MainFragment();
-            // C- Add it to FrameLayout container
+        mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.frame_layout_main);
+
+        if (mainFragment == null) {
+            mainFragment = new MainFragment();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.frameLayout_activity_main,mMainFragment)
+                    .add(R.id.frame_layout_main, mainFragment)
+                    .commit();
+        }
+    }
+
+    private void configureAndShowDetailFragment(){
+        detailFragment = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.frame_layout_detail);
+
+        if (detailFragment == null && findViewById(R.id.frame_layout_detail) != null) {
+            detailFragment = new DetailFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.frame_layout_detail, detailFragment)
                     .commit();
         }
     }
 }
+

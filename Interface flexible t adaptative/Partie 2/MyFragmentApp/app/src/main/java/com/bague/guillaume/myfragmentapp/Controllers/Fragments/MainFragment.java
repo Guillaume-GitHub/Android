@@ -10,77 +10,60 @@ import android.view.ViewGroup;
 
 import com.bague.guillaume.myfragmentapp.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link MainFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- */
 public class MainFragment extends Fragment implements View.OnClickListener {
 
-    //2 - Declare callback
-    private OnFragmentInteractionListener mListener;
+    // Declare callback
+    private OnButtonClickedListener mCallback;
 
-    public MainFragment() {
-        // Required empty public constructor
+    // Declare our interface that will be implemented by any container activity
+    public interface OnButtonClickedListener {
+        public void onButtonClicked(View view);
     }
+
+    // --------------
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate layout of fragment_main
-        View result = inflater.inflate(R.layout.fragment_main,container);
-        // set OnClickListener to button
-        result.findViewById(R.id.fragment_main_Button).setOnClickListener(this);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        // Inflate the layout of MainFragment
+        View result=inflater.inflate(R.layout.fragment_main, container, false);
+
+        // Set onClickListener to button "SHOW ME DETAILS"
+        result.findViewById(R.id.fragment_main_button).setOnClickListener(this);
+
         return result;
     }
 
     @Override
-    public void onClick(View v) {
-        //4 - Spread the click to the parent activity
-        Log.d(getClass().getSimpleName(),"button clicked");
-        if (mListener != null) {
-            mListener.onFragmentInteraction(v);
-        }
-    }
-
-    /////////////////////////
-    ////FRAGMENT SUPPORT////
-    ///////////////////////
-
-    // 3 - create callback to parent activity
-    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+
+        // Call the method that creating callback after being attached to parent activity
+        this.createCallbackToParentActivity();
     }
+
+    // --------------
+    // ACTIONS
+    // --------------
 
     @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+    public void onClick(View v) {
+        // Spread the click to the parent activity
+        mCallback.onButtonClicked(v);
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+    // --------------
+    // FRAGMENT SUPPORT
+    // --------------
 
-    // 1 - Declare our interface that will be implemented by any container activity
-    public interface OnFragmentInteractionListener{
-        void onFragmentInteraction(View view);
-
+    // Create callback to parent activity
+    private void createCallbackToParentActivity(){
+        try {
+            // Parent activity will automatically subscribe to callback
+            mCallback = (OnButtonClickedListener) getActivity();
+        } catch (ClassCastException e) {
+            throw new ClassCastException(e.toString()+ " must implement OnButtonClickedListener");
+        }
     }
 }
