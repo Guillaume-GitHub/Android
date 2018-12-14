@@ -35,9 +35,18 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnBu
 
     @Override
     public void onButtonClicked(View view) {
-        //Check if detail fragment is not created
-        if (detailFragment == null){
-            startActivity(new Intent(this, DetailActivity.class));
+
+        int buttonTag = Integer.parseInt(view.getTag().toString());
+
+        //Check if detail fragment is not null and visible (Tablet)
+        if (detailFragment != null && detailFragment.isVisible()){
+            // TABLET : update TextView
+           detailFragment.updateTextView(buttonTag);
+        }else{
+            //SMARTPHONE: pass tag into Intent to show update in DetailActivity
+            Intent  intent = new  Intent(this, DetailActivity.class);
+            intent.putExtra(DetailActivity.EXTRA_BUTTON_TAG,buttonTag);
+            startActivity(intent);
         }
     }
 

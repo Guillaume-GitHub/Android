@@ -1,20 +1,70 @@
 package com.bague.guillaume.myfragmentapp.Controllers.Fragments;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.bague.guillaume.myfragmentapp.Controllers.Activities.DetailActivity;
 import com.bague.guillaume.myfragmentapp.R;
 public class DetailFragment extends Fragment {
+
+    private TextView mTextView;
+    // 1 - Declare a buttonTag tracking
+    private int mTag;
+
+    // 2 - Create static variable to identify key in Bundle
+    private static final String KEY_BUTTONTAG = "DetailFragment.KEY_BUTTONTAG";
 
     public DetailFragment() { }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_detail, container, false);
+        View v = inflater.inflate(R.layout.fragment_detail, container, false);
+        mTextView = v.findViewById(R.id.textView_Detail);
+        return v;
     }
 
+    // check if a Tag were saved and update TextView
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if(savedInstanceState != null){
+            //Get last Tag value saved
+            int restoreTextViewTag = savedInstanceState.getInt(KEY_BUTTONTAG,0);
+            updateTextView(restoreTextViewTag);
+        }
+    }
+    // save tag in bundle
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //save Button tag in Bundle before destroy fragment
+        outState.putInt(KEY_BUTTONTAG,mTag);
+    }
+
+    public void updateTextView(int buttonTag) {
+        //Save last tag
+        mTag = buttonTag;
+
+        switch (buttonTag){
+            case 10:
+                this.mTextView.setText("You're a very good programmer !");
+                break;
+            case 20:
+                this.mTextView.setText("I do believe that Jon Snow is going to die in next season...");
+                break;
+            case 30:
+                this.mTextView.setText("Maybe Game of Thrones next season will get back in 2040 ?");
+                break;
+            default:
+                break;
+        }
+    }
 }
 
