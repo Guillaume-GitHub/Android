@@ -1,5 +1,6 @@
 package com.example.guillaume.navigationpatterns.Controllers.Activities;
 
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,18 +14,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.configureViewPager();
+        this.configureViewPagerAndTabs();
     }
 
-    private void configureViewPager() {
+    private void configureViewPagerAndTabs() {
         //Get ViewPager from Layout
         ViewPager viewPager = findViewById(R.id.main_viewpager);
 
         // Set PageAdapter
-        viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(), getResources().getIntArray(R.array.colorPagesViewPager)) {
-
+        viewPager.setAdapter(new PageAdapter(getSupportFragmentManager()) {
         });
 
-
+        // Get TabLayout
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.activity_main_tabs);
+        //Glue TabLayout and ViewPager together
+        tabLayout.setupWithViewPager(viewPager);
+        //Design : Tabs are same width
+        tabLayout.setTabMode(tabLayout.MODE_FIXED);
     }
 }
