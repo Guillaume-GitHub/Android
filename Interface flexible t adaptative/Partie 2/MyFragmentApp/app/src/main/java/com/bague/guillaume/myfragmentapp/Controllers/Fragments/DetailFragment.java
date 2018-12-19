@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.media.session.PlaybackStateCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +12,15 @@ import android.widget.TextView;
 
 import com.bague.guillaume.myfragmentapp.Controllers.Activities.DetailActivity;
 import com.bague.guillaume.myfragmentapp.R;
+
+import icepick.Icepick;
+import icepick.State;
+
 public class DetailFragment extends Fragment {
 
     private TextView mTextView;
     // 1 - Declare a buttonTag tracking
-    private int mTag;
+    @State int mTag;
 
     // 2 - Create static variable to identify key in Bundle
     private static final String KEY_BUTTONTAG = "DetailFragment.KEY_BUTTONTAG";
@@ -33,19 +38,17 @@ public class DetailFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        if(savedInstanceState != null){
-            //Get last Tag value saved
-            int restoreTextViewTag = savedInstanceState.getInt(KEY_BUTTONTAG,0);
-            updateTextView(restoreTextViewTag);
-        }
+        //Restore all @State annotation variable in Bundle
+        Icepick.restoreInstanceState(this,savedInstanceState);
+            updateTextView(mTag);
     }
+
     // save tag in bundle
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        //save Button tag in Bundle before destroy fragment
-        outState.putInt(KEY_BUTTONTAG,mTag);
+        // Save All @State annotation variable in Bundle
+        Icepick.saveInstanceState(this,outState);
     }
 
     public void updateTextView(int buttonTag) {
