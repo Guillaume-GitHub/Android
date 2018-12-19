@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.configureDrawerLayout();
         this.configureNavigationView();
 
+        showFirstFragment();
+
     }
 
     // call when item are clicking
@@ -115,8 +117,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigationView.setNavigationItemSelectedListener(this);
         }
 
-
+        //--------
         //FRAGMENT
+        //--------
+
+        private void showFirstFragment(){
+            Fragment visibleFragment = getSupportFragmentManager().findFragmentById(R.id.activity_main_frame_layout);
+            if (visibleFragment == null){
+                //Show a default Fragment (NewsFragment)
+                this.showFragment(FRAGMENT_NEWS);
+                // Mark as selected in menu
+                this.navigationView.getMenu().getItem(0).setChecked(true);
+            }
+        }
+
 
         private void showFragment(int fragmentIdentifierTag){
             switch (fragmentIdentifierTag){
