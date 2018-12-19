@@ -18,42 +18,37 @@ import butterknife.ButterKnife;
 import icepick.Icepick;
 import icepick.State;
 
-public class DetailFragment extends Fragment {
+public class DetailFragment extends BaseFragment {
 
     //Declare TextView (with ButterKnife)
     @BindView(R.id.textView_Detail) TextView mTextView;
-
-    // 1 - Declare a buttonTag tracking
+    // Declare a buttonTag tracking
     @State int mTag;
 
-    // 2 - Create static variable to identify key in Bundle
-    private static final String KEY_BUTTONTAG = "DetailFragment.KEY_BUTTONTAG";
 
-    public DetailFragment() { }
-
+    //------------
+    //BASE METHODS
+    //------------
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_detail, container, false);
-        ButterKnife.bind(this,v);
-        return v;
+    protected BaseFragment newInstance() {
+        return new DetailFragment();
     }
 
-    // check if a Tag were saved and update TextView
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        //Restore all @State annotation variable in Bundle
-        Icepick.restoreInstanceState(this,savedInstanceState);
-            updateTextView(mTag);
+    protected int getFragmentLayout() {
+        return R.layout.fragment_detail;
     }
 
-    // save tag in bundle
     @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        // Save All @State annotation variable in Bundle
-        Icepick.saveInstanceState(this,outState);
+    protected void configureDesign() {
+
     }
+
+    @Override
+    protected void updateDesign() {
+        updateTextView(mTag);
+    }
+
 
     public void updateTextView(int buttonTag) {
         //Save last tag
