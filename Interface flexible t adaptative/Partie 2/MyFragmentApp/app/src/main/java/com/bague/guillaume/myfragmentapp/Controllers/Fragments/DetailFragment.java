@@ -13,12 +13,16 @@ import android.widget.TextView;
 import com.bague.guillaume.myfragmentapp.Controllers.Activities.DetailActivity;
 import com.bague.guillaume.myfragmentapp.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import icepick.Icepick;
 import icepick.State;
 
 public class DetailFragment extends Fragment {
 
-    private TextView mTextView;
+    //Declare TextView (with ButterKnife)
+    @BindView(R.id.textView_Detail) TextView mTextView;
+
     // 1 - Declare a buttonTag tracking
     @State int mTag;
 
@@ -30,7 +34,7 @@ public class DetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_detail, container, false);
-        mTextView = v.findViewById(R.id.textView_Detail);
+        ButterKnife.bind(this,v);
         return v;
     }
 
