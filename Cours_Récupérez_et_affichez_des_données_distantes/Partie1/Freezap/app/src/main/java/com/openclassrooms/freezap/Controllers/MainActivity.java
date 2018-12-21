@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.openclassrooms.freezap.R;
 import com.openclassrooms.freezap.Utils.MyAlarmReceiver;
 import com.openclassrooms.freezap.Utils.MyAsyncTask;
+import com.openclassrooms.freezap.Utils.MyAsyncTaskLeaked;
 import com.openclassrooms.freezap.Utils.MyAsyncTaskLoader;
 import com.openclassrooms.freezap.Utils.MyHandlerThread;
 import com.openclassrooms.freezap.Utils.SyncJobService;
@@ -54,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements MyAsyncTask.Liste
         this.resumeAsyncTaskLoaderIfPossible();
 
         this.configureAlarmManager();
+
+        this.startAsyncTaskLeaked();
     }
 
     @Override
@@ -154,11 +157,14 @@ public class MainActivity extends AppCompatActivity implements MyAsyncTask.Liste
         handlerThread.startHandler();
     }
 
-    // ------
-
     // EXECUTE ASYNC TASK
     private void startAsyncTask() {
         new MyAsyncTask(this).execute();
+    }
+
+    // EXECUTE ASYNC TASK LEAKED
+    private void startAsyncTaskLeaked(){
+        new MyAsyncTaskLeaked(progressBar).execute();
     }
 
     @Override
