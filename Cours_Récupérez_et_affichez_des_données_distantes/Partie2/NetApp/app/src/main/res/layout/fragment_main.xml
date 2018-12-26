@@ -21,7 +21,8 @@
             android:textStyle="bold"
             android:textColor="#FFF"
             android:textAlignment="center"
-            android:text="@string/hello_blank_fragment" />
+            android:text="@string/hello_blank_fragment"
+            android:autoLink="web"/>
 
     </LinearLayout>
 

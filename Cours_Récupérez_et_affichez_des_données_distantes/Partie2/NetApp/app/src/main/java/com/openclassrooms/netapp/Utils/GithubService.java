@@ -1,6 +1,7 @@
 package com.openclassrooms.netapp.Utils;
 
 import com.openclassrooms.netapp.Models.GithubUser;
+import com.openclassrooms.netapp.Models.GithubUserInfos;
 
 import java.util.List;
 
@@ -15,6 +16,9 @@ public interface GithubService {
 
     @GET("users/{username}/followers")
     Observable<List<GithubUser>> getFollowing(@Path("username") String username);
+
+    @GET("users/{username}")
+    Observable<GithubUserInfos> getUserInfo(@Path("username") String username);
 
     public static final Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://api.github.com/")

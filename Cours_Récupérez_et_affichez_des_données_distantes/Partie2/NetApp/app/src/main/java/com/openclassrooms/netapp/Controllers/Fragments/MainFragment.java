@@ -2,19 +2,19 @@ package com.openclassrooms.netapp.Controllers.Fragments;
 
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+
 import android.support.v4.app.Fragment;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.openclassrooms.netapp.Models.GithubUser;
+import com.openclassrooms.netapp.Models.GithubUserInfos;
 import com.openclassrooms.netapp.R;
 import com.openclassrooms.netapp.Utils.GithubStreams;
-import com.openclassrooms.netapp.Utils.NetworkAsyncTask;
-import io.reactivex.Observable;
+
 import java.util.List;
 
 
@@ -58,7 +58,8 @@ public class MainFragment extends Fragment{
 
     @OnClick(R.id.fragment_main_button)
     public void submit(View view) {
-        this.executeHttpRequestWithRetrofit();
+        //this.executeHttpRequestWithRetrofit();
+        this.executeChainHttpRequest();
 
     }
 
@@ -95,6 +96,29 @@ public class MainFragment extends Fragment{
 
     }
 
+    // 2 - Execute chain Requests with Retrofit
+
+    private void executeChainHttpRequest(){
+        this.disposable = GithubStreams.streamFetchUserFollowingAndFetchFirstUserInfos("jakewharton")
+                .subscribeWith(new DisposableObserver<GithubUserInfos>() {
+                    @Override
+                    public void onNext(GithubUserInfos githubUserInfos) {
+                        updateUIWhenStartHttpRequest();
+                        updateUIWithUserInfo(githubUserInfos);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("TAG", "onError");
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.e("TAG", "onComplete");
+                    }
+                });
+
+    }
 
     private void destroyStream() {
         if(this.disposable != null && !this.disposable.isDisposed())
@@ -119,5 +143,10 @@ public class MainFragment extends Fragment{
         stringBuilder.append("@" + user.getLogin() + ", ");
         }
         updateUIWhenStoppingHttpRequest(stringBuilder.toString());
+    }
+
+    private void updateUIWithUserInfo(GithubUserInfos userInfo) {
+        textView.setText("The first follower of JakeWharton is "+ userInfo.getName() + " with "+ userInfo.getFollowers() + " followers");
+
     }
 }
