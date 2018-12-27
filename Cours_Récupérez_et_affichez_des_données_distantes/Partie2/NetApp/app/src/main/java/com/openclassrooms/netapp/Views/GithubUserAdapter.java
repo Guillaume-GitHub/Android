@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.RequestManager;
 import com.openclassrooms.netapp.Models.GithubUser;
 import com.openclassrooms.netapp.R;
 
@@ -15,10 +16,12 @@ public class GithubUserAdapter extends RecyclerView.Adapter<GithubUserViewHolder
 
     //FOR DATA
     private List<GithubUser> githubUsers;
+    private RequestManager mGlide;
 
     //Constructor
-    public GithubUserAdapter(List<GithubUser> Users) {
+    public GithubUserAdapter(List<GithubUser> Users, RequestManager glide) {
         this.githubUsers = Users;
+        this.mGlide = glide;
     }
 
     @Override
@@ -34,7 +37,7 @@ public class GithubUserAdapter extends RecyclerView.Adapter<GithubUserViewHolder
     //Update View Holder with githubUsers
     @Override
     public void onBindViewHolder(GithubUserViewHolder viewHolder, int position) {
-        viewHolder.updateWithGithubUser(this.githubUsers.get(position));
+        viewHolder.updateWithGithubUser(this.githubUsers.get(position),this.mGlide);
 
     }
 
