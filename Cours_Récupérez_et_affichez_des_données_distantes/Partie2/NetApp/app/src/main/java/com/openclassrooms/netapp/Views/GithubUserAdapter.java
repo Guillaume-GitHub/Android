@@ -19,9 +19,11 @@ public class GithubUserAdapter extends RecyclerView.Adapter<GithubUserViewHolder
     private RequestManager mGlide;
 
     //Constructor
-    public GithubUserAdapter(List<GithubUser> Users, RequestManager glide) {
+    // 3 - Passing an instance of this callback to constructor
+    public GithubUserAdapter(List<GithubUser> Users, RequestManager glide, Listener callback) {
         this.githubUsers = Users;
         this.mGlide = glide;
+        this.callback = callback;
     }
 
     @Override
@@ -35,9 +37,10 @@ public class GithubUserAdapter extends RecyclerView.Adapter<GithubUserViewHolder
     }
 
     //Update View Holder with githubUsers
+    // 4 - Passing an instance of callback through each ViewHolder
     @Override
     public void onBindViewHolder(GithubUserViewHolder viewHolder, int position) {
-        viewHolder.updateWithGithubUser(this.githubUsers.get(position),this.mGlide);
+        viewHolder.updateWithGithubUser(this.githubUsers.get(position),this.mGlide,this.callback);
 
     }
 
@@ -51,4 +54,19 @@ public class GithubUserAdapter extends RecyclerView.Adapter<GithubUserViewHolder
 
         return this.githubUsers.get(userPosition);
     }
+    //--------------------------
+    // Create Callback interface
+    //--------------------------
+
+    //1
+    public interface Listener {
+
+       void  onClickDeleteButton(int position);
+    }
+
+    // 2 Declaring callback
+    private final Listener callback;
+
+
+
 }

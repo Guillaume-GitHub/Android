@@ -39,7 +39,7 @@ import io.reactivex.observers.DisposableObserver;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment{
+public class MainFragment extends Fragment implements GithubUserAdapter.Listener{
 
     // Declare recyclerView
     @BindView(R.id.fragment_main_recyclerView) RecyclerView recyclerView;
@@ -53,6 +53,7 @@ public class MainFragment extends Fragment{
     private List<GithubUser> githubUsers;
     private GithubUserAdapter adapter;
 
+    private Context context = this.getContext();
 
 
     public MainFragment() { }
@@ -67,7 +68,7 @@ public class MainFragment extends Fragment{
         this.configureSwipeToRefresh();
         // execute Stream to get data
         this.executeHttpRequestWithRetrofit();
-         this.configureOnClickRecyclerView(this.getContext());
+         this.configureOnClickRecyclerView();
 
         return view;
     }
@@ -86,7 +87,7 @@ public class MainFragment extends Fragment{
         // 1 Reset list of GithubUser
         this.githubUsers = new ArrayList<>();
         // 2 Create adapter and passing GithubUser List + glide
-        this.adapter = new GithubUserAdapter(this.githubUsers, Glide.with(this));
+        this.adapter = new GithubUserAdapter(this.githubUsers, Glide.with(this),this);
         // 3 Attache adapter to RecyclerView
         this.recyclerView.setAdapter(this.adapter);
         // 4 Set layout Manager to position Item
@@ -96,7 +97,7 @@ public class MainFragment extends Fragment{
     //-----------------------------------------
     // CONFIGURATION CLICK IN RECYCLERVIEW ITEM
     //-----------------------------------------
-    private void configureOnClickRecyclerView(final Context context){
+    private void configureOnClickRecyclerView(){
         ItemClickSupport.addTo(recyclerView,R.layout.fragment_main_item)
                 .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
                     @Override
@@ -168,4 +169,9 @@ public class MainFragment extends Fragment{
             this.disposable.dispose();
     }
 
+    @Override
+    public void onClickDeleteButton(int position) {
+        GithubUser user = githubUsers.get(position);
+        Toast.makeText(this.getContext(), "You have trying to delete " + user.getLogin(), Toast.LENGTH_SHORT).show();
+    }
 }
