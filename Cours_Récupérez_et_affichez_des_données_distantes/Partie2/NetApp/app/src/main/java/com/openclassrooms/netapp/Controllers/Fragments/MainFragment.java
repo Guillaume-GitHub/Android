@@ -1,6 +1,7 @@
 package com.openclassrooms.netapp.Controllers.Fragments;
 
 
+import android.content.Context;
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
@@ -20,6 +22,7 @@ import com.openclassrooms.netapp.Models.GithubUser;
 import com.openclassrooms.netapp.Models.GithubUserInfos;
 import com.openclassrooms.netapp.R;
 import com.openclassrooms.netapp.Utils.GithubStreams;
+import com.openclassrooms.netapp.Utils.ItemClickSupport;
 import com.openclassrooms.netapp.Views.GithubUserAdapter;
 
 import java.util.ArrayList;
@@ -64,6 +67,7 @@ public class MainFragment extends Fragment{
         this.configureSwipeToRefresh();
         // execute Stream to get data
         this.executeHttpRequestWithRetrofit();
+         this.configureOnClickRecyclerView(this.getContext());
 
         return view;
     }
@@ -88,6 +92,23 @@ public class MainFragment extends Fragment{
         // 4 Set layout Manager to position Item
         this.recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
+
+    //-----------------------------------------
+    // CONFIGURATION CLICK IN RECYCLERVIEW ITEM
+    //-----------------------------------------
+    private void configureOnClickRecyclerView(final Context context){
+        ItemClickSupport.addTo(recyclerView,R.layout.fragment_main_item)
+                .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+                    @Override
+                    public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                        GithubUser user = adapter.getUser(position);
+                        Toast.makeText(context,user.getLogin() + " Position " + position, Toast.LENGTH_SHORT).show();
+                        Log.e("TAG", "onItemClicked: position = " + position);
+                    }
+                });
+    }
+
+
 
     // ----------------------------
     // CONFIGURATION SWIPETOREFRESH
