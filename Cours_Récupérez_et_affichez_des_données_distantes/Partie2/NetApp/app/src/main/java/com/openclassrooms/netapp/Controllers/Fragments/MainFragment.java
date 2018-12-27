@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
 
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +16,9 @@ import com.openclassrooms.netapp.Models.GithubUser;
 import com.openclassrooms.netapp.Models.GithubUserInfos;
 import com.openclassrooms.netapp.R;
 import com.openclassrooms.netapp.Utils.GithubStreams;
+import com.openclassrooms.netapp.Views.GithubUserAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,11 +34,16 @@ import io.reactivex.observers.DisposableObserver;
  */
 public class MainFragment extends Fragment{
 
+    // Declare recyclerView
+    @BindView(R.id.fragment_main_recyclerView) RecyclerView recyclerView;
+
     // 4 - Declare subscription
     private Disposable disposable;
+    // Declare List of <GithubUser> and Adapter
+    private List<GithubUser> githubUsers;
+    private GithubUserAdapter adapter;
 
-    // FOR DESIGN
-    @BindView(R.id.fragment_main_textview) TextView textView;
+
 
     public MainFragment() { }
 
@@ -42,6 +51,11 @@ public class MainFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, view);
+        // configure RecyclerView
+        this.configureRecyclerView();
+        // execute Stream to get data
+        this.executeHttpRequestWithRetrofit();
+
         return view;
     }
 
@@ -53,14 +67,17 @@ public class MainFragment extends Fragment{
 
 
     // -----------------
-    // ACTIONS
+    // CONFIGURATION RECYCLERVIEW
     // -----------------
-
-    @OnClick(R.id.fragment_main_button)
-    public void submit(View view) {
-        //this.executeHttpRequestWithRetrofit();
-        this.executeChainHttpRequest();
-
+    private void configureRecyclerView(){
+        // 1 Reset list of GithubUser
+        this.githubUsers = new ArrayList<>();
+        // 2 Create adapter and passing GithubUser List
+        this.adapter = new GithubUserAdapter(this.githubUsers);
+        // 3 Attache adapter to RecyclerView
+        this.recyclerView.setAdapter(this.adapter);
+        // 4 Set layout Manager to position Item
+        this.recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
 
     // -----------------
@@ -70,9 +87,6 @@ public class MainFragment extends Fragment{
     // 1 - Execute Stream
     private void executeHttpRequestWithRetrofit(){
 
-        //1.1 update UI
-        this.updateUIWhenStartHttpRequest();
-
         this.disposable = GithubStreams.streamFetchUserFollowing("jakewharton")
                 .subscribeWith(new DisposableObserver<List<GithubUser>>(){
 
@@ -80,7 +94,7 @@ public class MainFragment extends Fragment{
                     public void onNext(List<GithubUser> githubUsers) {
                         Log.e("TAG", "onNext");
                         // 1.3 - Update UI with list of users
-                        updateUIWithListOfUsers(githubUsers);
+                        updateUI(githubUsers);
                     }
 
                     @Override
@@ -96,57 +110,16 @@ public class MainFragment extends Fragment{
 
     }
 
-    // 2 - Execute chain Requests with Retrofit
+    private void updateUI(List<GithubUser> users) {
 
-    private void executeChainHttpRequest(){
-        this.disposable = GithubStreams.streamFetchUserFollowingAndFetchFirstUserInfos("jakewharton")
-                .subscribeWith(new DisposableObserver<GithubUserInfos>() {
-                    @Override
-                    public void onNext(GithubUserInfos githubUserInfos) {
-                        updateUIWhenStartHttpRequest();
-                        updateUIWithUserInfo(githubUserInfos);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.e("TAG", "onError");
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        Log.e("TAG", "onComplete");
-                    }
-                });
-
+        this.githubUsers.addAll(users);
+        this.adapter.notifyDataSetChanged();
+        Log.e("TAG", "updateUI");
     }
 
     private void destroyStream() {
-        if(this.disposable != null && !this.disposable.isDisposed())
+        if (this.disposable != null && !this.disposable.isDisposed())
             this.disposable.dispose();
     }
 
-    // -----------------
-    // Update UI
-    // -----------------
-    private void updateUIWhenStartHttpRequest(){
-        this.textView.setText("Downloading ...");
-    }
-
-    private void updateUIWhenStoppingHttpRequest(String response){
-        this.textView.setText(response);
-    }
-
-    private void updateUIWithListOfUsers(List<GithubUser> users) {
-
-        StringBuilder stringBuilder = new StringBuilder();
-        for (GithubUser user :users){
-        stringBuilder.append("@" + user.getLogin() + ", ");
-        }
-        updateUIWhenStoppingHttpRequest(stringBuilder.toString());
-    }
-
-    private void updateUIWithUserInfo(GithubUserInfos userInfo) {
-        textView.setText("The first follower of JakeWharton is "+ userInfo.getName() + " with "+ userInfo.getFollowers() + " followers");
-
-    }
 }
