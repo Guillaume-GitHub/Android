@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -40,6 +41,9 @@ public class MainFragment extends Fragment{
     // Declare recyclerView
     @BindView(R.id.fragment_main_recyclerView) RecyclerView recyclerView;
 
+    // Declare swipeToRefresh
+    @BindView(R.id.fragment_main_refresh_container) SwipeRefreshLayout swipeRefreshLayout;
+
     // 4 - Declare subscription
     private Disposable disposable;
     // Declare List of <GithubUser> and Adapter
@@ -56,6 +60,8 @@ public class MainFragment extends Fragment{
         ButterKnife.bind(this, view);
         // configure RecyclerView
         this.configureRecyclerView();
+        // configure swipeToRefresh
+        this.configureSwipeToRefresh();
         // execute Stream to get data
         this.executeHttpRequestWithRetrofit();
 
@@ -69,9 +75,9 @@ public class MainFragment extends Fragment{
     }
 
 
-    // -----------------
+    // ----------------------------
     // CONFIGURATION RECYCLERVIEW
-    // -----------------
+    // ----------------------------
     private void configureRecyclerView(){
         // 1 Reset list of GithubUser
         this.githubUsers = new ArrayList<>();
@@ -82,6 +88,20 @@ public class MainFragment extends Fragment{
         // 4 Set layout Manager to position Item
         this.recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
+
+    // ----------------------------
+    // CONFIGURATION SWIPETOREFRESH
+    // ----------------------------
+    private void configureSwipeToRefresh() {
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                executeHttpRequestWithRetrofit();
+            }
+        });
+    }
+
 
     // -----------------
     // Http RxJAVA
@@ -114,7 +134,9 @@ public class MainFragment extends Fragment{
     }
 
     private void updateUI(List<GithubUser> users) {
-
+        // Stop refreshing and clear actual list
+        this.swipeRefreshLayout.setRefreshing(false);
+        this.githubUsers.clear();
         this.githubUsers.addAll(users);
         this.adapter.notifyDataSetChanged();
         Log.e("TAG", "updateUI");
