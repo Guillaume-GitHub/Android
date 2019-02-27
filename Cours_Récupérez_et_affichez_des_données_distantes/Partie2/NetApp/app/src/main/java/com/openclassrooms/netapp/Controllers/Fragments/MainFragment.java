@@ -2,10 +2,12 @@ package com.openclassrooms.netapp.Controllers.Fragments;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
 
+import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,6 +20,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
+import com.openclassrooms.netapp.Controllers.Activities.DetailActivity;
+import com.openclassrooms.netapp.Controllers.Activities.MainActivity;
 import com.openclassrooms.netapp.Models.GithubUser;
 import com.openclassrooms.netapp.Models.GithubUserInfos;
 import com.openclassrooms.netapp.R;
@@ -40,6 +44,8 @@ import io.reactivex.observers.DisposableObserver;
  * A simple {@link Fragment} subclass.
  */
 public class MainFragment extends Fragment implements GithubUserAdapter.Listener{
+
+    public static String BUNDLE_USERNAME_VALUE;
 
     // Declare recyclerView
     @BindView(R.id.fragment_main_recyclerView) RecyclerView recyclerView;
@@ -68,7 +74,7 @@ public class MainFragment extends Fragment implements GithubUserAdapter.Listener
         this.configureSwipeToRefresh();
         // execute Stream to get data
         this.executeHttpRequestWithRetrofit();
-         this.configureOnClickRecyclerView();
+        this.configureOnClickRecyclerView();
 
         return view;
     }
@@ -103,8 +109,13 @@ public class MainFragment extends Fragment implements GithubUserAdapter.Listener
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                         GithubUser user = adapter.getUser(position);
-                        Toast.makeText(context,user.getLogin() + " Position " + position, Toast.LENGTH_SHORT).show();
                         Log.e("TAG", "onItemClicked: position = " + position);
+
+                        BUNDLE_USERNAME_VALUE = user.getLogin();
+
+                        Intent intent = new Intent(getActivity(),DetailActivity.class);
+                        startActivity(intent);
+
                     }
                 });
     }
