@@ -5,6 +5,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -12,6 +13,7 @@ import butterknife.OnClick;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
+import com.openclassrooms.firebaseoc.auth.ProfileActivity;
 import com.openclassrooms.firebaseoc.base.BaseActivity;
 
 import java.util.Arrays;
@@ -22,6 +24,7 @@ public class MainActivity extends BaseActivity {
     private static final int RC_SIGN_IN = 123 ;
 
     @BindView(R.id.main_activity_coordinator_layout) CoordinatorLayout coordinatorLayout;
+    @BindView(R.id.main_activity_button_login) Button buttonLogin;
 
     @Override
     public int getFragmentLayout() { return R.layout.activity_main; }
@@ -33,6 +36,13 @@ public class MainActivity extends BaseActivity {
         this.handleResponseAfterSignIn(requestCode, resultCode, data);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // 5 - Update UI when activity is resuming
+        this.updateUIWhenResuming();
+    }
+
     /*--------------- UI -------------------*/
 
     // Show Snack Bar with a message
@@ -40,11 +50,20 @@ public class MainActivity extends BaseActivity {
         Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_SHORT).show();
     }
 
+    // Update UI when activity is resuming
+    private void updateUIWhenResuming(){
+        this.buttonLogin.setText(this.isCurrentUserLogged() ? getString(R.string.button_login_text_logged) : getString(R.string.button_login_text_not_logged));
+    }
+
     /*--------------- ACTION -------------------*/
 
     @OnClick (R.id.main_activity_button_login)
     public void onClickLoginButton(){
-        this.startSignInActivity();
+        if (this.isCurrentUserLogged()){
+            this.startProfileActivity();
+        } else {
+            this.startSignInActivity();
+        }
     }
 
     /*--------------- NAVIGATION -------------------*/
@@ -62,6 +81,12 @@ public class MainActivity extends BaseActivity {
                     .setLogo(R.drawable.ic_logo_auth)
                     .build(),
                 RC_SIGN_IN);
+    }
+
+    //Launching Profile Activity
+    private void startProfileActivity(){
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
     }
 
     /*--------------- UTILS -------------------*/
