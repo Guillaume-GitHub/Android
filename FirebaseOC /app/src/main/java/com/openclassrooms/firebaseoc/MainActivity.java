@@ -54,7 +54,10 @@ public class MainActivity extends BaseActivity {
                     .createSignInIntentBuilder()
                     .setTheme(R.style.LoginTheme)
                     .setAvailableProviders(
-                            Arrays.asList(new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build()))
+                            Arrays.asList(
+                                    new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(), // SUPPORT EMAIL
+                                    new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build() // SUPPORT GOOGLE
+                            ))
                     .setIsSmartLockEnabled(false, true)
                     .setLogo(R.drawable.ic_logo_auth)
                     .build(),
