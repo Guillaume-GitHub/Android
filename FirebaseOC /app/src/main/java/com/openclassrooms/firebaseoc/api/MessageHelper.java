@@ -31,4 +31,16 @@ public class MessageHelper {
                 .collection(COLLECTION_NAME)
                 .add(message);
     }
+
+    public static Task<DocumentReference> createMessageWithImageForChat(String urlImage, String textMessage, String chat, User userSender){
+
+        // Creating Message with the URL image
+        Message message = new Message(textMessage, urlImage, userSender);
+
+        // Storing Message on Firestore
+        return ChatHelper.getChatCollection()
+                .document(chat)
+                .collection(COLLECTION_NAME)
+                .add(message);
+    }
 }
