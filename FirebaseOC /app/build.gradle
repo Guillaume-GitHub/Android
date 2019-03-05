@@ -49,8 +49,13 @@ dependencies {
     // Firebase Messaging
     implementation 'com.google.firebase:firebase-messaging:11.8.0'
 
-    //EASY PERMISSIONS
+    // EASY PERMISSIONS
     implementation 'pub.devrel:easypermissions:1.1.1'
+
+    // Crashlytic
+    implementation('com.crashlytics.sdk.android:crashlytics:2.7.1@aar') {
+        transitive = true
+    }
 }
 
 apply plugin: 'com.google.gms.google-services'

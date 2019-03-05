@@ -10,6 +10,7 @@ import android.widget.Button;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+import com.crashlytics.android.Crashlytics;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
