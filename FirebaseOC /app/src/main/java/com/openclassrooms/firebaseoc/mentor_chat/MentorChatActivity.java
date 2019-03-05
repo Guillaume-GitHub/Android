@@ -1,6 +1,8 @@
 package com.openclassrooms.firebaseoc.mentor_chat;
 
+import android.Manifest;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,12 +12,14 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
+
 import com.openclassrooms.firebaseoc.R;
 import com.openclassrooms.firebaseoc.api.MessageHelper;
 import com.openclassrooms.firebaseoc.api.UserHelper;
@@ -25,6 +29,8 @@ import com.openclassrooms.firebaseoc.models.User;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.EasyPermissions;
 
 public class MentorChatActivity extends BaseActivity implements MentorChatAdapter.Listener{
     // FOR DESIGN
@@ -45,6 +51,10 @@ public class MentorChatActivity extends BaseActivity implements MentorChatAdapte
     private static final String CHAT_NAME_BUG = "bug";
     private static final String CHAT_NAME_FIREBASE = "firebase";
 
+    // STATIC DATA FOR PICTURE
+    private static final String PERMS = Manifest.permission.READ_EXTERNAL_STORAGE;
+    private static final int RC_IMAGE_PERMS = 100;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +66,13 @@ public class MentorChatActivity extends BaseActivity implements MentorChatAdapte
 
     @Override
     public int getFragmentLayout() { return R.layout.activity_mentor_chat; }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        // Fwd results to EasyPermission
+        EasyPermissions.onRequestPermissionsResult(requestCode,permissions,grantResults,this);
+    }
 
     // --------------------
     // ACTIONS
@@ -78,7 +95,15 @@ public class MentorChatActivity extends BaseActivity implements MentorChatAdapte
     }
 
     @OnClick(R.id.activity_mentor_chat_add_file_button)
-    public void onClickAddFile() { }
+    // Ask permission when accessing to this listener
+    @AfterPermissionGranted(RC_IMAGE_PERMS)
+    public void onClickAddFile() {
+        if (!EasyPermissions.hasPermissions(this, PERMS)) {
+            EasyPermissions.requestPermissions(this, getString(R.string.popup_title_permission_files_access), RC_IMAGE_PERMS, PERMS);
+            return;
+        }
+        Toast.makeText(this, "Vous avez le droit d'accéder aux images !", Toast.LENGTH_SHORT).show();
+    }
 
 
     @OnClick(R.id.activity_mentor_chat_send_button)
