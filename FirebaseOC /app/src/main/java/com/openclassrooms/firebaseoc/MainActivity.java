@@ -16,6 +16,7 @@ import com.firebase.ui.auth.IdpResponse;
 import com.openclassrooms.firebaseoc.api.UserHelper;
 import com.openclassrooms.firebaseoc.auth.ProfileActivity;
 import com.openclassrooms.firebaseoc.base.BaseActivity;
+import com.openclassrooms.firebaseoc.mentor_chat.MentorChatActivity;
 
 import java.util.Arrays;
 
@@ -67,6 +68,16 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    @OnClick(R.id.main_activity_button_chat)
+    public void onClickChatButton() {
+        // Check if user is connected before launching MentorActivity
+        if (this.isCurrentUserLogged()){
+            this.startMentorChatActivity();
+        } else {
+            this.showSnackBar(this.coordinatorLayout, getString(R.string.error_not_connected));
+        }
+    }
+
     /*--------------- NAVIGATION -------------------*/
     private void startSignInActivity() {
         startActivityForResult(
@@ -87,6 +98,12 @@ public class MainActivity extends BaseActivity {
     //Launching Profile Activity
     private void startProfileActivity(){
         Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
+
+    // Starting Mentor Activity
+    private void startMentorChatActivity(){
+        Intent intent = new Intent(this, MentorChatActivity.class);
         startActivity(intent);
     }
 
