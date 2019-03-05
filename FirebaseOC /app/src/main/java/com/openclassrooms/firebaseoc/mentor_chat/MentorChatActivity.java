@@ -1,7 +1,10 @@
 package com.openclassrooms.firebaseoc.mentor_chat;
 
 import android.Manifest;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -15,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -45,6 +49,8 @@ public class MentorChatActivity extends BaseActivity implements MentorChatAdapte
     private MentorChatAdapter mentorChatAdapter;
     @Nullable private User modelCurrentUser;
     private String currentChatName;
+    // Uri of image selected by user
+    private Uri uriImageSelected;
 
     // STATIC DATA FOR CHAT (3)
     private static final String CHAT_NAME_ANDROID = "android";
@@ -54,6 +60,9 @@ public class MentorChatActivity extends BaseActivity implements MentorChatAdapte
     // STATIC DATA FOR PICTURE
     private static final String PERMS = Manifest.permission.READ_EXTERNAL_STORAGE;
     private static final int RC_IMAGE_PERMS = 100;
+
+    // STATIC DATA FOR PICTURE
+    private static final int RC_CHOOSE_PHOTO = 200;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +81,13 @@ public class MentorChatActivity extends BaseActivity implements MentorChatAdapte
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         // Fwd results to EasyPermission
         EasyPermissions.onRequestPermissionsResult(requestCode,permissions,grantResults,this);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // Calling the appropriate method after activity result
+        this.handleResponse(requestCode, resultCode, data);
     }
 
     // --------------------
@@ -98,11 +114,7 @@ public class MentorChatActivity extends BaseActivity implements MentorChatAdapte
     // Ask permission when accessing to this listener
     @AfterPermissionGranted(RC_IMAGE_PERMS)
     public void onClickAddFile() {
-        if (!EasyPermissions.hasPermissions(this, PERMS)) {
-            EasyPermissions.requestPermissions(this, getString(R.string.popup_title_permission_files_access), RC_IMAGE_PERMS, PERMS);
-            return;
-        }
-        Toast.makeText(this, "Vous avez le droit d'accéder aux images !", Toast.LENGTH_SHORT).show();
+        this.chooseImageFromPhone();
     }
 
 
@@ -166,5 +178,35 @@ public class MentorChatActivity extends BaseActivity implements MentorChatAdapte
     public void onDataChanged() {
         // Show TextView in case RecyclerView is empty
         textViewRecyclerViewEmpty.setVisibility(this.mentorChatAdapter.getItemCount() == 0 ? View.VISIBLE : View.GONE);
+    }
+
+
+    // --------------------
+    // FILE MANAGEMENT
+    // --------------------
+
+    private void chooseImageFromPhone(){
+        if (!EasyPermissions.hasPermissions(this, PERMS)) {
+            EasyPermissions.requestPermissions(this, getString(R.string.popup_title_permission_files_access), RC_IMAGE_PERMS, PERMS);
+            return;
+        }
+        // 3 - Launch an "Selection Image" Activity
+        Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(i, RC_CHOOSE_PHOTO);
+    }
+
+    // 4 - Handle activity response (after user has chosen or not a picture)
+    private void handleResponse(int requestCode, int resultCode, Intent data){
+        if (requestCode == RC_CHOOSE_PHOTO) {
+            if (resultCode == RESULT_OK) { //SUCCESS
+                this.uriImageSelected = data.getData();
+                Glide.with(this) //SHOWING PREVIEW OF IMAGE
+                        .load(this.uriImageSelected)
+                        .apply(RequestOptions.circleCropTransform())
+                        .into(this.imageViewPreview);
+            } else {
+                Toast.makeText(this, getString(R.string.toast_title_no_image_chosen), Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
